@@ -1,9 +1,5 @@
 package com.mycompany.proiect_java;
 
-/**
- *
- * @author jh0nix
- */
 public class Lampa extends OptiuniLampa {
      public   String serie;
   public  int marime_bec;

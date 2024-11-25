@@ -9,6 +9,7 @@ public class Proiect_java {
         System.out.println(e1);
         Prelungitor s1=new Prelungitor();
         System.out.println(s1);
+        
         LampaInterioara lampaInterioara = new LampaInterioara();
 lampaInterioara.setTipBec("LED");
 lampaInterioara.setAreAbajur(true);
@@ -25,7 +26,6 @@ prelungitor.setLungimeCablu(3.5);
 prelungitor.setProtectieSupratensiune(true);
 prelungitor.setTipConector("Schuko");
 prelungitor.setPutereMaxima(2500);
-
 System.out.println(prelungitor);
 
 if (prelungitor.getProtectieSupratensiune()) {

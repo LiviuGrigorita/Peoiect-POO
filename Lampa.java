@@ -1,74 +1,68 @@
- public class Lampa {
-    private boolean estePornita;
-    private int intensitateLumina;
-    private String culoareLumina;
-    private double consumEnergetic;
-    private String tipLampa;
+package com.mycompany.proiect_java;
+
+/**
+ *
+ * @author jh0nix
+ */
+public class Lampa extends OptiuniLampa {
+     public   String serie;
+  public  int marime_bec;
+  int  inaltime; 
+  private String culoare;
+  private boolean cuBaterie;
     
-    //Constructor fara argumente
-    public Lampa() {
-        this.estePornita = false;
-        this.intensitateLumina = 0;
-        this.culoareLumina = "alb";
-        this.consumEnergetic = 0.0;
-        this.tipLampa = "necunoscut";
+   public Lampa (){
+        this.serie="necunoscita";
+        this.marime_bec=0;
+        this.inaltime=0;
+        this.cuBaterie=false;
+        this.culoare="necunoscuta"; 
     }
+   public Lampa(int marime_bec,String serie,int inaltime,String culoare,boolean cuBaterie){
+       this.marime_bec=marime_bec;
+       this.serie=serie;
+       this.inaltime=inaltime;
+       this.culoare=culoare;
+       this.cuBaterie=cuBaterie;
+       
+}
+    public Lampa(Lampa obj){
+        this.marime_bec=obj.marime_bec;
+        this.serie=obj.serie;
+    }
+    
+    public void setInaltime(int inaltime){
+        this.inaltime=inaltime;
    
-    //Constructor cu toate argumentele
-    public Lampa(boolean estePornita, int intensitateLumina, String culoareLumina, double consumEnergetic, String tipLampa) {
-        this.estePornita = estePornita;
-        this.intensitateLumina = intensitateLumina;
-        this.culoareLumina = culoareLumina;
-        this.consumEnergetic = consumEnergetic;
-        this.tipLampa = tipLampa;
+    }
+    public int getInaltime(){
+        return this.inaltime;
     }
     
-    //constructor de copiere
-    public Lampa(Lampa altaLampa) {
-        this.estePornita = altaLampa.estePornita;
-        this.intensitateLumina = altaLampa.intensitateLumina;
-        this.culoareLumina = altaLampa.culoareLumina;
-        this.consumEnergetic = altaLampa.consumEnergetic;
-        this.tipLampa = altaLampa.tipLampa;
+    public void setCuloare(String culoare){
+        this.culoare=culoare;
     }
-     
-
-    //Get si set
-    public boolean isEstePornita() {
-        return estePornita;
+    public String getCuloare(){
+        return this.culoare;
     }
-    public void setEstePornita(boolean estePornita) {
-        this.estePornita = estePornita;
+    public void setcuBaterie(boolean cuBaterie){
+        this.cuBaterie=cuBaterie;
     }
-    public int getIntensitateLumina() {
-        return intensitateLumina;
+    public boolean getcuBaterie(){
+        return this.cuBaterie;
     }
-    public void setIntensitateLumina(int intensitateLumina) {
-        this.intensitateLumina = intensitateLumina;
-    }
-    public String getCuloareLumina() {
-        return culoareLumina;
-    }
-    public void setCuloareLumina(String culoareLumina) {
-        this.culoareLumina = culoareLumina;
-    }
-    public double getConsumEnergetic() {
-        return consumEnergetic;
-    }
-    public void setConsumEnergetic(double consumEnergetic) {
-        this.consumEnergetic = consumEnergetic;
-    }
-    public String getTipLampa() {
-        return tipLampa;
-    }
-    public void setTipLampa(String tipLampa) {
-        this.tipLampa = tipLampa;
-    }
-    
-    //Metoda toString
-
     @Override
+    public void porneste(){
+        this.setPornita(true);
+
+    }
+    @Override
+    public void opreste(){
+        this.setPornita(false);
+    }
+    
+     @Override
     public String toString() {
-        return "Lampa{" + "estePornita=" + estePornita + ", intensitateLumina=" + intensitateLumina + ", culoareLumina=" + culoareLumina + ", consumEnergetic=" + consumEnergetic + ", tipLampa=" + tipLampa + '}';
+        return "Lampa are seria "+this.serie+" si marimea becului de "+this.marime_bec+" cm"+" inaltimea de "+this.inaltime+" cm "+"are culoarea "+this.culoare+" are baterie: "+this.cuBaterie;
     }
 }

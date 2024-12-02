@@ -3,25 +3,17 @@ package com.mycompany.proiect_java;
 public class LampaInterioara extends Lampa {
     private boolean pornita;
     private boolean conectata;
-    private String tipBec;
-    private boolean areAbajur;
-    private int nivelLuminozitate;
+    private int nivel_iluminare;
+    private String tip_abajur; // Specific lămpilor de interior (ex: material, design)
+    private boolean dimmable; // Dacă nivelul de iluminare este ajustabil
 
     public LampaInterioara() {
         super();
         this.conectata = false;
         this.pornita = false;
-        this.tipBec = "necunoscut";
-        this.areAbajur = false;
-        this.nivelLuminozitate = 0;
-    }
-
-    public LampaInterioara(boolean pornita, boolean conectata, String serie, int marime_bec, int inaltime, String culoare, boolean cuBaterie, String tipBec, boolean areAbajur) {
-        super(marime_bec, serie, inaltime, culoare, cuBaterie);
-        this.conectata = conectata;
-        this.pornita = pornita;
-        this.tipBec = tipBec;
-        this.areAbajur = areAbajur;
+        this.nivel_iluminare = 0;
+        this.tip_abajur = "necunoscut";
+        this.dimmable = false;
     }
 
     public LampaInterioara(LampaInterioara obj) {
@@ -29,32 +21,71 @@ public class LampaInterioara extends Lampa {
         if (obj != null) {
             this.conectata = obj.conectata;
             this.pornita = obj.pornita;
-            this.tipBec = obj.tipBec;
-            this.areAbajur = obj.areAbajur;
-            this.nivelLuminozitate = obj.nivelLuminozitate;
+            this.nivel_iluminare = obj.nivel_iluminare;
+            this.tip_abajur = obj.tip_abajur;
+            this.dimmable = obj.dimmable;
         }
     }
 
-    public void setTipBec(String tipBec) {
-        this.tipBec = tipBec;
+    public LampaInterioara(String serie, int marime_bec, int inaltime, String culoare, boolean cuBaterie, 
+                           boolean conectata, boolean pornita, int nivel_iluminare, String tip_abajur, boolean dimmable) {
+        super(marime_bec, serie, inaltime, culoare, cuBaterie);
+        this.conectata = conectata;
+        this.pornita = pornita;
+        this.nivel_iluminare = nivel_iluminare;
+        this.tip_abajur = tip_abajur;
+        this.dimmable = dimmable;
     }
 
-    public String getTipBec() {
-        return this.tipBec;
+    public void setPornita(boolean pornita) {
+        this.pornita = pornita;
     }
 
-    public void setAreAbajur(boolean areAbajur) {
-        this.areAbajur = areAbajur;
+    public boolean isPornita() {
+        return this.pornita;
     }
 
-    public boolean getAreAbajur() {
-        return this.areAbajur;
+    public void setConectata(boolean conectata) {
+        this.conectata = conectata;
     }
 
-    public void setNivelLuminozitate(int nivelLuminozitate) {
-        this.nivelLuminozitate = nivelLuminozitate;
+    public boolean isConectata() {
+        return this.conectata;
     }
 
-    public int getNivelLuminozitate() {
-        return this.nivelLuminozitate;
+    public void setNivelIluminare(int nivel_iluminare) {
+        this.nivel_iluminare = nivel_iluminare;
     }
+
+    public int getNivelIluminare() {
+        return this.nivel_iluminare;
+    }
+
+    public void setTipAbajur(String tip_abajur) {
+        this.tip_abajur = tip_abajur;
+    }
+
+    public String getTipAbajur() {
+        return this.tip_abajur;
+    }
+
+    public void setDimmable(boolean dimmable) {
+        this.dimmable = dimmable;
+    }
+
+    public boolean isDimmable() {
+        return this.dimmable;
+    }
+
+    @Override
+    public String toString() {
+        return "LampaInterioara{" +
+                "conectata=" + conectata +
+                ", pornita=" + pornita +
+                ", nivel_iluminare=" + nivel_iluminare +
+                ", tip_abajur='" + tip_abajur + '\'' +
+                ", dimmable=" + dimmable +
+                ", " + super.toString() +
+                '}';
+    }
+}

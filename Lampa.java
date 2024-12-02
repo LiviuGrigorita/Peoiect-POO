@@ -8,7 +8,7 @@ public class Lampa extends OptiuniLampa {
   private boolean cuBaterie;
     
    public Lampa (){
-        this.serie="necunoscita";
+        this.serie="necunoscuta";
         this.marime_bec=0;
         this.inaltime=0;
         this.cuBaterie=false;

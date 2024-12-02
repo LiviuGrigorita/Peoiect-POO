@@ -47,6 +47,15 @@ public class Lampa extends OptiuniLampa {
     public boolean getcuBaterie(){
         return this.cuBaterie;
     }
+       public void setserie(String serie){
+        this.serie=serie;
+    }
+    public String getserie(){
+        return this.serie;
+    }
+    public void setmarime_bec(int marime_bec){
+        this.marime_bec=marime_bec;
+    }
     @Override
     public void porneste(){
         this.setPornita(true);

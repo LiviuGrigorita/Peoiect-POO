@@ -1,0 +1,78 @@
+% Datele de intrare
+A = [0.4 1.2 0.5 0.7 0.2 0.6 0.2 1.4]; % Timpurile de sosire
+S = [2 0.7 0.2 0.4 1 0.6 0.5 1.1]; % Duratele de servire
+
+% Initializare
+n = length(A); % Numarul de clienti
+T_start = zeros(1, n); % Timpurile de incepere a servirii
+T_end = zeros(1, n); % Timpurile de finalizare a servirii
+W = zeros(1, n); % Timpii de asteptare
+
+% Simulare
+for i = 1:n
+    if i == 1
+        % Primul client este servit imediat ce ajunge
+        T_start(i) = A(i);
+    else
+        % Urmatorii clienti sunt serviti dupa finalizarea celui anterior
+        T_start(i) = max(A(i), T_end(i-1));
+    end
+    
+    % Calculam timpul de finalizare a servirii
+    T_end(i) = T_start(i) + S(i);
+    
+    % Calculam timpul de asteptare
+    W(i) = T_start(i) - A(i);
+end
+
+% Afisarea rezultatelor
+disp('Timpurile de sosire (A):');
+disp(A);
+disp('Timpurile de servire (S):');
+disp(S);
+disp('Timpurile de inceput ale servirii (T_start):');
+disp(T_start);
+disp('Timpurile de finalizare ale servirii (T_end):');
+disp(T_end);
+disp('Timpii de asteptare (W):');
+disp(W);
+
+% Metrii de performanta
+mean_waiting_time = mean(W); % Timpul mediu de asteptare
+utilization = sum(S) / (T_end(end) - A(1)); % Utilizarea serverului
+
+disp('Timpul mediu de asteptare:');
+disp(mean_waiting_time);
+disp('Utilizarea serverului:');
+disp(utilization);
+
+% Vizualizări folosind subplot-uri
+figure;
+
+% Subplot 1: Sosiri vs. Servire
+subplot(3, 1, 1);
+bar(1:n, [A' S'], 'stacked');
+xlabel('Client');
+ylabel('Timp');
+title('Timpuri de sosire și durate de servire');
+legend('Timp sosire', 'Durată servire');
+
+% Subplot 2: Timpi de început și finalizare
+subplot(3, 1, 2);
+hold on;
+plot(1:n, T_start, '-o', 'DisplayName', 'T_start');
+plot(1:n, T_end, '-x', 'DisplayName', 'T_end');
+xlabel('Client');
+ylabel('Timp');
+title('Timpurile de început și finalizare a servirii');
+legend;
+grid on;
+hold off;
+
+% Subplot 3: Timpi de așteptare
+subplot(3, 1, 3);
+bar(1:n, W);
+xlabel('Client');
+ylabel('Timp de așteptare');
+title('Timpii de așteptare pentru fiecare client');
+grid on;
